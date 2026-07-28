@@ -1,1 +1,492 @@
 # projeto-intregrador-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Delícia - As Melhores Pizzas da Cidade</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #e63946;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Cardápio */
+        .cardapio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .pizza-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .pizza-card h3 {
+            color: #e63946;
+            margin-bottom: 0.5rem;
+        }
+
+        .pizza-card .preco {
+            font-weight: bold;
+            color: #2a9d8f;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Chatbot Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #e63946;
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-box {
+            height: 300px;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background-color: #f1f1f1;
+        }
+
+        .mensagem {
+            max-width: 80%;
+            padding: 0.6rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .bot-msg {
+            background-color: white;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background-color: #2a9d8f;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .chat-input-area button:hover {
+            background-color: #d62828;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍕 Pizzaria Delícia</h1>
+        <p>A melhor pizza artesanal entregue na sua casa!</p>
+    </header>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Delícia - As Melhores Pizzas da Cidade</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #e63946;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Cardápio */
+        .cardapio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .pizza-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .pizza-card h3 {
+            color: #e63946;
+            margin-bottom: 0.5rem;
+        }
+
+        .pizza-card .preco {
+            font-weight: bold;
+            color: #2a9d8f;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Chatbot Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #e63946;
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-box {
+            height: 300px;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background-color: #f1f1f1;
+        }
+
+        .mensagem {
+            max-width: 80%;
+            padding: 0.6rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .bot-msg {
+            background-color: white;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background-color: #2a9d8f;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .chat-input-area button:hover {
+            background-color: #d62828;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍕 Pizzaria Delícia</h1>
+        <p>A melhor pizza artesanal entregue na sua casa!</p>
+    </header>
+
+    <div class="container">
+        <h2>Nosso Cardápio</h2>
+        <div class="cardapio">
+            <div class="pizza-card">
+                <h3>Calabresa</h3>
+                <p>Molho de tomate, mussarela, calabresa fatiada e cebola.</p>
+                <p class="preco">R$ 45,00</p>
+            </div>
+            <div class="pizza-card">
+                <h3>Quatro Queijos</h3>
+                <p>Mussarela, provolone, parmesão e gorgonzola.</p>
+                <p class="preco">R$ 50,00</p>
+            </div>
+            <div class="pizza-card">
+                <h3>Margherita</h3>
+                <p>Molho de tomate, mussarela, tomate fatiado e manjericão fresco.</p>
+                <p class="preco">R$ 42,00</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-widget">
+        <div class="chat-header">
+            <span>🤖 Assistente Pizzaria</span>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="mensagem bot-msg">
+                Olá! Bem-vindo à Pizzaria Delícia! 🍕<br>
+                Digite <b>1</b> para ver o menu, <b>2</b> para fazer um pedido ou <b>3</b> para falar sobre entregas.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeydown="checarEnter(event)">
+            <button onclick="enviarMensagem()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+
+        function enviarMensagem() {
+            const texto = userInput.value.trim();
+            if (texto === '') return;
+
+            // Exibir mensagem do usuário
+            adicionarMensagem(texto, 'user-msg');
+            userInput.value = '';
+
+            // Resposta do Bot após um breve atraso
+            setTimeout(() => {
+                processarRespostaBot(texto.toLowerCase());
+            }, 600);
+        }
+
+        function adicionarMensagem(texto, classe) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `mensagem ${classe}`;
+            msgDiv.innerHTML = texto;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function processarRespostaBot(entrada) {
+            let resposta = "";
+
+            if (entrada.includes("1") || entrada.includes("menu") || entrada.includes("cardapio")) {
+                resposta = "Nossas opções de hoje:<br>- Calabresa: R$ 45,00<br>- Quatro Queijos: R$ 50,00<br>- Margherita: R$ 42,00";
+            } else if (entrada.includes("2") || entrada.includes("pedido")) {
+                resposta = "Para fazer um pedido, digite o nome da pizza desejada e o seu endereço!";
+            } else if (entrada.includes("3") || entrada.includes("entrega") || entrada.includes("tempo")) {
+                resposta = "Nosso tempo médio de entrega é de 30 a 45 minutos. O frete é grátis para o bairro centro!";
+            } else if (entrada.includes("calabresa") || entrada.includes("quatro queijos") || entrada.includes("margherita")) {
+                resposta = "Ótima escolha! Anotado. Por favor, nos informe seu endereço completo para finalizar o pedido.";
+            } else if (entrada.includes("rua") || entrada.includes("avenida") || entrada.includes("bairro")) {
+                resposta = "Pedido confirmado! Sua pizza já está sendo preparada e logo sairá para entrega. Obrigado! 🍕";
+            } else {
+                resposta = "Desculpe, não entendi. Digite:<br><b>1</b> - Ver Cardápio<br><b>2</b> - Fazer Pedido<br><b>3</b> - Informações de Entrega";
+            }
+
+            adicionarMensagem(resposta, 'bot-msg');
+        }
+
+        function checarEnter(event) {
+            if (event.key === 'Enter') {
+                enviarMensagem();
+            }
+        }
+    </script>
+</body>
+</html>
+    <div class="container">
+        <h2>Nosso Cardápio</h2>
+        <div class="cardapio">
+            <div class="pizza-card">
+                <h3>Calabresa</h3>
+                <p>Molho de tomate, mussarela, calabresa fatiada e cebola.</p>
+                <p class="preco">R$ 45,00</p>
+            </div>
+            <div class="pizza-card">
+                <h3>Quatro Queijos</h3>
+                <p>Mussarela, provolone, parmesão e gorgonzola.</p>
+                <p class="preco">R$ 50,00</p>
+            </div>
+            <div class="pizza-card">
+                <h3>Margherita</h3>
+                <p>Molho de tomate, mussarela, tomate fatiado e manjericão fresco.</p>
+                <p class="preco">R$ 42,00</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-widget">
+        <div class="chat-header">
+            <span>🤖 Assistente Pizzaria</span>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="mensagem bot-msg">
+                Olá! Bem-vindo à Pizzaria Delícia! 🍕<br>
+                Digite <b>1</b> para ver o menu, <b>2</b> para fazer um pedido ou <b>3</b> para falar sobre entregas.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeydown="checarEnter(event)">
+            <button onclick="enviarMensagem()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+
+        function enviarMensagem() {
+            const texto = userInput.value.trim();
+            if (texto === '') return;
+
+            // Exibir mensagem do usuário
+            adicionarMensagem(texto, 'user-msg');
+            userInput.value = '';
+
+            // Resposta do Bot após um breve atraso
+            setTimeout(() => {
+                processarRespostaBot(texto.toLowerCase());
+            }, 600);
+        }
+
+        function adicionarMensagem(texto, classe) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `mensagem ${classe}`;
+            msgDiv.innerHTML = texto;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function processarRespostaBot(entrada) {
+            let resposta = "";
+
+            if (entrada.includes("1") || entrada.includes("menu") || entrada.includes("cardapio")) {
+                resposta = "Nossas opções de hoje:<br>- Calabresa: R$ 45,00<br>- Quatro Queijos: R$ 50,00<br>- Margherita: R$ 42,00";
+            } else if (entrada.includes("2") || entrada.includes("pedido")) {
+                resposta = "Para fazer um pedido, digite o nome da pizza desejada e o seu endereço!";
+            } else if (entrada.includes("3") || entrada.includes("entrega") || entrada.includes("tempo")) {
+                resposta = "Nosso tempo médio de entrega é de 30 a 45 minutos. O frete é grátis para o bairro centro!";
+            } else if (entrada.includes("calabresa") || entrada.includes("quatro queijos") || entrada.includes("margherita")) {
+                resposta = "Ótima escolha! Anotado. Por favor, nos informe seu endereço completo para finalizar o pedido.";
+            } else if (entrada.includes("rua") || entrada.includes("avenida") || entrada.includes("bairro")) {
+                resposta = "Pedido confirmado! Sua pizza já está sendo preparada e logo sairá para entrega. Obrigado! 🍕";
+            } else {
+                resposta = "Desculpe, não entendi. Digite:<br><b>1</b> - Ver Cardápio<br><b>2</b> - Fazer Pedido<br><b>3</b> - Informações de Entrega";
+            }
+
+            adicionarMensagem(resposta, 'bot-msg');
+        }
+
+        function checarEnter(event) {
+            if (event.key === 'Enter') {
+                enviarMensagem();
+            }
+        }
+    </script>
+</body>
+</html>
